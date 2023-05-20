@@ -1,6 +1,11 @@
 package utils;
 
+// The WeatherUtils class provides utility methods for weather data manipulation and conversion.
 public class WeatherUtils {
+
+  // Converts the weather code to a human-readable description.
+  // @param code: An integer representing the weather code.
+  // @return A string containing the weather description.
   public static String weatherCodeToDescription(int code) {
     switch (code) {
       case 100:
@@ -24,10 +29,16 @@ public class WeatherUtils {
     }
   }
 
+  // Converts a temperature in Celsius to Fahrenheit.
+  // @param celsius: A double representing the temperature in Celsius.
+  // @return A double containing the temperature in Fahrenheit.
   public static double celsiusToFahrenheit(double celsius) {
     return celsius * 9.0 / 5.0 + 32;
   }
 
+  // Converts wind speed in kilometers per hour (km/h) to Beaufort scale.
+  // @param windSpeed: A double representing the wind speed in km/h.
+  // @return An integer representing the Beaufort scale value.
   public static int kmhToBeaufort(double windSpeed) {
     if (windSpeed <= 1) return 0;
     if (windSpeed <= 5) return 1;
@@ -44,6 +55,9 @@ public class WeatherUtils {
     return 12;
   }
 
+  // Converts wind direction in degrees to compass points (e.g., N, S, E, W).
+  // @param windDirection: An integer representing the wind direction in degrees.
+  // @return A string containing the compass point representation.
   public static String windDirectionToCompass(int windDirection) {
     if (windDirection >= 348.75 || windDirection < 11.25) return "N";
     if (windDirection >= 11.25 && windDirection < 33.75) return "NNE";
@@ -63,6 +77,10 @@ public class WeatherUtils {
     return "NNW";
   }
 
+  // Calculates the wind chill based on temperature in Celsius and wind speed in km/h.
+  // @param temperatureC: A double representing the temperature in Celsius.
+  // @param windSpeedKmh: A double representing the wind speed in km/h.
+  // @return A double containing the wind chill value.
   public static double calculateWindChill(double temperatureC, double windSpeedKmh) {
     double windVelocityPower = Math.pow( windSpeedKmh, 0.16 );
     return 13.12 + 0.6215 * temperatureC - 11.37 * windVelocityPower + 0.3965 * temperatureC * windVelocityPower;

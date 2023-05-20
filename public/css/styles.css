@@ -1,124 +1,130 @@
 /* Color Variables */
 :root {
-    --base-color: #485fc7;
-    --text-color: #ffffff;
+    --base-color: #485fc7; /* Define the primary color used throughout the design */
+    --text-color: #ffffff; /* Define the default text color */
 }
 
 /* Global styles */
 body {
-    margin-top: 3.25rem; /* Adjust this value as needed */
+    /* Add margin at the top of the body to account for the fixed header or other elements */
+    margin-top: 3.25rem;
 }
 
 .hero {
+    /* Set a background image for the hero section and ensure it is centered and covers the entire area */
     background: url('/public/images/hero_background.png') no-repeat center center;
     background-size: cover;
 }
 
 /* Text and layout styles */
 .paragraph {
-    margin-bottom: 1.5rem; /* Standard paragraph bottom margin */
+    margin-bottom: 1.5rem; /* Set the standard bottom margin for paragraphs */
 }
 
 /* Flexbox column layout */
 .columns {
-    display: flex; /* Enable flex layout on the container */
+    display: flex; /* Enable flexbox layout on container to arrange child elements */
 }
 
 .column {
+    /* Setup a column layout for each column within the container */
     display: flex;
-    flex-direction: column; /* Stack child elements vertically */
-    justify-content: stretch; /* Stretch items to fill the container vertically */
+    flex-direction: column;
+    /* Ensure items stretch to fill the container vertically */
+    justify-content: stretch;
 }
 
 .column .box {
-    flex-grow: 1; /* Allow boxes to grow and fill their container */
+    flex-grow: 1; /* Allow boxes to grow and fill parent container */
 }
 
 /* Logo styles */
 .logo-image {
     display: inline-block;
     vertical-align: middle;
+    /* Set the logo dimensions and spacing */
     margin-right: 10px;
     width: 100px;
-    height: auto; /* Maintain aspect ratio */
+    height: auto; /* Maintain the aspect ratio of the image when resized */
 }
 
 /* Footer styles */
 .footer {
+    /* Define the background color of the footer */
     background-color: var(--base-color);
 }
 
 .highlight {
-    background-color: #f2f2f2; /* This is a light grey. Change the color as you prefer. */
+    background-color: #f2f2f2; /* Light grey color for the highlighted sections */
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 5px; /* Rounded corners for the highlight boxes */
 }
 
 /* Box styles */
 .highlight-box {
-    background-color: var(--base-color);
-    color: var(--text-color); /* Contrast text color */
+    background-color: var(--base-color); /* Set the highlighted box background color to the base color */
+    color: var(--text-color); /* Set the text color to provide good contrast */
 }
-
 
 /* Link styles */
 a {
-    color: var(--text-color); /* Base color for links */
+    color: var(--text-color); /* Set the base color for hyperlinks */
 }
 
+/* Define the hyperlink color changes when interacted with */
 a:hover {
-    color: var(--base-color); /* Highlight color when hovered */
+    color: var(--base-color);
 }
 
 a:visited,
 a:active {
-    color: var(--text-color); /* Maintain base color when visited or active */
+    color: var(--text-color);
 }
 
-/* Add this CSS rule at the end of your CSS file */
+/* Additional custom styles for specific elements */
 .blue-background {
     background-color: var(--base-color);
 }
 
 .blue-box {
     background-color: var(--base-color);
-    color: #f8f8f8;
+    color: #f8f8f8; /* Light greyish-white color for contrast within the blue box */
 }
 
 .title-white {
-    color: white;
+    color: white; /* White-colored title text style */
 }
 
 .blue-background .card-header-title {
-    color: white;
+    color: white; /* White-colored header text within blue-background elements */
 }
 
 /* Custom styles for reading-table */
 .reading-table {
-    border-collapse: separate;
-    border-spacing: 1 1em;
+    border-collapse: separate; /* Keep the table borders separate for individual cell styling */
+    border-spacing: 0 1em; /* Define border spacing for the table rows */
 }
 
 .reading-table thead th {
-    background-color: #1a83ff; /* Desired background color for the header */
-    color: #ffffff; /* Change the text color in the header to white */
-    font-weight: bold; /* Bold text for the header */
+    background-color: #1a83ff; /* Set header background color */
+    color: #ffffff; /* Set header text color */
+    font-weight: bold; /* Set header text to bold */
 }
 
 .reading-table tbody tr:hover {
-    background-color: #e8f0ff; /* Background color on row hover */
+    background-color: #e8f0ff; /* Set row background color when hovered */
 }
 
 .reading-table tbody td {
     padding: 0.75em; /* Add padding to table cells */
-    border-radius: 0.3em; /* Add slightly rounded corners */
+    border-radius: 0.3em; /* Add a slightly rounded corner to the table cells */
     background-color: #ffffff; /* Set table row background color to white */
 }
 
 .reading-table tbody th {
-    background-color: #ffffff;
+    background-color: #ffffff; /* Set table row th background color to white */
 }
 
 .coordinates {
-    margin-left: 10px;
+    margin-left: 10px; /* Add margin-left to coordinates for spacing */
 }

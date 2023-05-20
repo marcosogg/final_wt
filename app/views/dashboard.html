@@ -1,44 +1,52 @@
+<!-- Main template extension -->
 #{extends 'main.html' /}
 #{set title:'Weather Station Dashboard' /}
 
 <!-- Hero Banner -->
-<section class="hero is-medium is-link" style="background: url('public/images/hero_background.png') no-repeat center center; background-size: cover;">
+<section class="hero is-medium is-link" style="background: url('/public/images/hero_background.png') no-repeat center center; background-size: cover;">
     <div class="hero-body">
         <div class="container">
+            <!-- Project title and description -->
             <h1 class="title">
                 Weather Station Dashboard
             </h1>
             <h2 class="subtitle">
                 Monitor real-time weather conditions from our network of user-owned stations
             </h2>
+            <!-- Link to about page -->
             <a class="button is-primary" href="/about">Get to know us</a>
         </div>
     </div>
 </section>
 
-<!-- Add Station section -->
+<!-- Add Station form section -->
 <section class="section">
     <div class="container highlight">
+        <!-- POST request form to add a station -->
         <form method="POST" action="/addStation">
             <div class="columns">
+                <!-- Input field for station name -->
                 <div class="field column">
                     <label class="label">Station Name</label>
                     <div class="control">
                         <input class="input" type="text" name="stationName" placeholder="Enter station name">
                     </div>
                 </div>
+                <!-- Input field for latitude -->
                 <div class="field column">
                     <label class="label">Latitude</label>
                     <div class="control">
                         <input class="input" type="number" step="0.01" min="-90" max="90" name="latitude" placeholder="Enter latitude">
                     </div>
                 </div>
+                <!-- Input field for longitude -->
                 <div class="field column">
                     <label class="label">Longitude</label>
                     <div class="control">
                         <input class="input" type="number" step="0.01" min="-180" max="180" name="longitude" placeholder="Enter longitude">
                     </div>
                 </div>
+                <!-- Add station button -->
                 <div class="field column">
                     <label class="label">&nbsp;</label>
                     <div class="control">
@@ -50,47 +58,52 @@
     </div>
 </section>
 
-<!-- Weather Cards -->
+<!-- Weather Cards section -->
 <section class="section">
     <div class="container">
         #{list items:stations, as:'station'}
         <div class="card mb-4">
+            <!-- Station header with name and coordinates -->
             <header class="card-header blue-background">
                 <p class="card-header-title is-size-3">
                     <i class="fa fa-map-marker-alt mr-1"> </i>${station.name} <span class="is-size-5 has-text-weight-normal coordinates">(${station.latitude}, ${station.longitude})</span>
                 </p>
             </header>
+            <!-- Station data -->
             <div class="card-content">
                 <div class="columns is-multiline">
+                    <!-- Weather -->
                     <div class="column is-one-quarter">
                         <div class="box has-text-centered blue-box">
                             <p class="title is-4 title-white">Weather <i class="fa fa-cloud"></i></p>
+                            <!-- Display weather icon and description based on latest reading -->
                             <i class="${station.latestReading != null ? utils.IconsUtils.weatherCodeToIconClass(station.latestReading.code) : 'fas fa-question'} fa-2x"></i>
                             <p class="is-size-5">${station.latestReading != null ? utils.WeatherUtils.weatherCodeToDescription(station.latestReading.code) : 'No readings available yet'}</p>
                         </div>
                     </div>
+                    <!-- Temperature -->
                     <div class="column is-one-quarter">
                         <div class="box has-text-centered blue-box">
                             <p class="title is-4 title-white">Temperature <i class="fa fa-thermometer-half"></i></p>
+                            <!-- Display current temperature, min, and max temperatures -->
                             <p class="is-size-5">${station.latestReading != null ? station.latestReading.temperature + "°C / " + utils.WeatherUtils.celsiusToFahrenheit(station.latestReading.temperature) + "°F" : 'No readings available yet'}</p>
                             <p>Min: ${utils.StationUtils.minTemperature(station.readings)}°C<br>Max: ${utils.StationUtils.maxTemperature(station.readings)}°C</p>
                         </div>
                     </div>
-
+                    <!-- Wind -->
                     <div class="column is-one-quarter">
                         <div class="box has-text-centered blue-box">
                             <p class="title is-4 title-white">Wind <i class="fa fa-flag"></i></p>
-                            <p class="is-size-5">
-                                ${station.latestReading != null ? utils.WeatherUtils.kmhToBeaufort(station.latestReading.windSpeed) + " bft, " + utils.WeatherUtils.windDirectionToCompass(station.latestReading.windDirection) : 'No readings available yet'},
-                                ${station.latestReading != null ? String.format("%.2f", utils.WeatherUtils.calculateWindChill(station.latestReading.temperature, station.latestReading.windSpeed)) + "°C" : 'No readings available yet'}</p>
-                            </p>
+                            <!-- Display wind data: Beaufort scale and direction, wind chill, min and max wind speed -->
+                            <p class="is-size-5">${station.latestReading != null ? utils.WeatherUtils.kmhToBeaufort(station.latestReading.windSpeed) + " bft, " + utils.WeatherUtils.windDirectionToCompass(station.latestReading.windDirection) : 'No readings available yet'}, ${station.latestReading != null ? String.format("%.2f", utils.WeatherUtils.calculateWindChill(station.latestReading.temperature, station.latestReading.windSpeed)) + "°C" : 'No readings available yet'}</p>
                             <p>Min: ${utils.StationUtils.minWindSpeed(station.readings)} km/h<br>Max: ${utils.StationUtils.maxWindSpeed(station.readings)} km/h</p>
                         </div>
                     </div>
-
+                    <!-- Pressure -->
                     <div class="column is-one-quarter">
                         <div class="box has-text-centered blue-box">
                             <p class="title is-4 title-white">Pressure <i class="fa fa-weight-hanging"></i></p>
+                            <!-- Display currrent pressure, min and max pressure -->
                             <p class="is-size-5">${station.latestReading != null ? station.latestReading.pressure + " hPa" : 'No readings available yet'}</p>
                             <p>Min: ${utils.StationUtils.minPressure(station.readings)} hPa<br>Max: ${utils.StationUtils.maxPressure(station.readings)} hPa</p>
                         </div>
@@ -98,7 +111,7 @@
                     </div>
                 </div>
 
-                <!-- Reading table -->
+                <!-- Readings table -->
                 <table class="table is-fullwidth is-striped is-bordered reading-table">
                     <thead>
                     <tr>
@@ -109,6 +122,7 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <!-- Loop through all readings and display data -->
                     #{list items:station.readings, as:'reading'}
                     <tr>
                         <td>${reading.code}</td>
@@ -124,6 +138,7 @@
                 <form method="POST" action="@{Dashboard.addReading(station.id)}">
                     <input type="hidden" name="stationId" value="${station.id}" />
                     <div class="columns highlight">
+                        <!-- Input fields for adding a new reading -->
                         <div class="field column is-one-sixth">
                             <label class="label">Code</label>
                             <div class="control">
@@ -154,6 +169,7 @@
                                 <input class="input" type="number" step="1" min="0" max="360" name="windDirection" placeholder="Enter wind direction" />
                             </div>
                         </div>
+                        <!-- Add reading button -->
                         <div class="field column is-one-sixth">
                             <div class="control highlight">
                                 <button type="submit" class="button is-link">Add Reading</button>
@@ -161,7 +177,6 @@
                         </div>
                     </div>
                 </form>
-
             </div>
         </div>
         #{/list}

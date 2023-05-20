@@ -1,10 +1,17 @@
 package utils;
 
+// This utility class is responsible for converting weather codes
+// to corresponding Font Awesome icon classes, which are used for
+// displaying appropriate weather icons in the front-end.
 public class IconsUtils {
 
+  // This method takes an integer weather code as input and returns
+  // a corresponding Font Awesome icon class as a string.
   public static String weatherCodeToIconClass(int code) {
     String iconClass;
 
+    // The switch statement checks the input weather code and
+    // assigns the corresponding Font Awesome icon class.
     switch (code) {
       case 100: // Clear
         iconClass = "fas fa-sun";
@@ -30,10 +37,12 @@ public class IconsUtils {
       case 800: // Thunder
         iconClass = "fas fa-bolt";
         break;
-      default:
+      default: // Unknown weather code
         iconClass = "fas fa-question";
     }
 
+    // The method returns the appropriate Font Awesome icon class
+    // as a string.
     return iconClass;
   }
 }

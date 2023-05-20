@@ -1,7 +1,11 @@
+<!-- This template is responsible for rendering the "About" page of the WeatherTop 1000 weather analytics application.
+It extends the "main.html" layout and sets the page title, before defining the different sections of the page.
+Please note that no code alterations should be made except for comments. -->
+
 #{extends 'main.html' /}
 #{set title:'About' /}
 
-<!-- Hero Banner -->
+<!-- Hero Banner: Displays the hero banner with a background image, title, subtitle, and a button that links to the app Dashboard. -->
 <section class="hero is-medium is-link"
          style="background: url('public/images/hero_background.png') no-repeat center center; background-size: cover;">
     <div class="hero-body">
@@ -17,26 +21,29 @@
     </div>
 </section>
 
-
-<!-- About the App Section -->
+<!-- About the App section: Provides information about the WeatherTop 1000 app, its purpose, and features. -->
 <section class="section">
     <div class="container">
         <h3 class="title is-3">About the App</h3>
         <div class="columns">
             <div class="column is-two-thirds">
+                <!-- General description of the WeatherTop 1000 app and its goals -->
                 <p class="paragraph">WeatherTop 1000 is a weather analytics app that provides accurate, real-time
                     weather data from our network of user-owned weather stations. Our goal is to help users stay
                     informed and prepared for any weather conditions, making it easier for them to plan their activities
                     and make better decisions.</p>
+                <!-- Explanation of the app's easy-to-use dashboard feature -->
                 <p class="paragraph">Our easy-to-use dashboard provides instant access to essential weather information,
                     including temperature, wind speed, and pressure, allowing users to monitor weather conditions at a
                     glance.</p>
+                <!-- How the WeatherTop 1000 app gets its data and aims to provide accurate information -->
                 <p class="paragraph">With WeatherTop 1000, you can say goodbye to relying solely on weather forecasts
                     from distant meteorological stations. Our app taps into a vast network of user-owned weather
                     stations, ensuring you receive precise and up-to-date weather data in real-time. We believe that
                     accurate information is the key to staying ahead of unpredictable weather patterns and making
                     informed choices.</p>
             </div>
+            <!-- Displaying the WeatherTop WS1000 device image -->
             <div class="column">
                 <figure class="image container is-256x256">
                     <img src="/public/images/ws1000_transparent_bg.png" alt="WeatherTop WS1000"/>
@@ -46,12 +53,12 @@
     </div>
 </section>
 
-<!-- Our Team Section -->
+<!-- Our Team Section: Introduces the team behind the WeatherTop 1000 app -->
 <section class="section">
     <div class="container">
         <h3 class="title is-3">Meet Our Team</h3>
         <div class="columns is-vcentered">
-            <!-- Add team member information with their images and roles -->
+            <!-- Display team member information (image, name, and role). Add more team members as needed. -->
             <div class="column has-text-centered">
                 <figure class="image is-256x256" style="margin: 0 auto;">
                     <img src="/public/images/team-member-1.png" alt="Team Member 1"/>
@@ -66,12 +73,11 @@
                 <p class="title is-5">Mark Smith</p>
                 <p class="subtitle is-6">Founder & Lead Developer</p>
             </div>
-            <!-- Add more team members as needed -->
         </div>
     </div>
 </section>
 
-<!-- Call to Action Section -->
+<!-- Call to Action Section: Encourages users to try the WeatherTop 1000 app with a button that leads to the Dashboard -->
 <section class="section">
     <div class="container has-text-centered">
         <h4 class="title is-4">Ready to try WeatherTop 1000?</h4>
