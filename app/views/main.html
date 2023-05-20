@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>#{get 'title' /}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+
+<nav class="navbar is-link is-small is-fixed-top">
+    <div class="navbar-item">
+        <img src="/public/images/navbar_logo.png" alt="Logo"/>
+    </div>
+    <div class="navbar-menu">
+        <div class="navbar-end">
+            <a class="navbar-item" href="/"> Main </a>
+            <a class="navbar-item" href="/dashboard"> Dashboard </a>
+            <a class="navbar-item" href="/about"> About </a>
+        </div>
+    </div>
+</nav>
+<section class="section">
+    <div class="container">
+        #{doLayout /}
+    </div>
+</section>
+<!-- Footer -->
+<footer class="footer">
+    <div class="content has-text-centered">
+        <p>
+            Copyright Weather Station - 2023
+        </p>
+    </div>
+</footer>
+</body>
+</html>
